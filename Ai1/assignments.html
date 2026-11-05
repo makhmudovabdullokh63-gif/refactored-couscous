@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Homework · CampusAI</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="app" id="app"></div>
+  <template id="page-template">
+    <header class="topbar">
+      <div>
+        <h2 class="page-title">Homework</h2>
+        <p class="lede">Completion is stored per student.</p>
+      </div>
+      <div class="filters">
+        <select id="statusFilter">
+          <option value="">All statuses</option>
+          <option value="upcoming">Upcoming</option>
+          <option value="overdue">Overdue</option>
+          <option value="completed">Completed</option>
+        </select>
+        <select id="sortFilter">
+          <option value="deadline">Sort by deadline</option>
+          <option value="course">Sort by course</option>
+          <option value="title">Sort by title</option>
+        </select>
+        <input id="courseFilter" placeholder="Course code" />
+      </div>
+    </header>
+    <div class="grid cols-2" id="list"></div>
+  </template>
+  <script src="/js/api.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/assignments.js"></script>
+</body>
+</html>

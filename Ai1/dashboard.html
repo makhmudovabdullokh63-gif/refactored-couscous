@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard · CampusAI</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="app" id="app"></div>
+  <template id="page-template">
+    <header class="topbar">
+      <div>
+        <h2 class="page-title" id="welcome">Dashboard</h2>
+        <p class="lede" id="today-date"></p>
+        <p class="muted" id="group-line"></p>
+        <p class="demo-flag" id="uni-line"></p>
+      </div>
+      <div class="toolbar">
+        <a class="primary" href="/assistant.html">Ask CampusAI</a>
+        <a class="ghost" href="/schedule.html">Timetable</a>
+      </div>
+    </header>
+    <section class="grid cols-4">
+      <article class="card"><h3>Next class</h3><div id="next-class"></div></article>
+      <article class="card"><h3>Today</h3><div id="today-list"></div></article>
+      <article class="card"><h3>Homework</h3><div id="overdue"></div><div id="hw-list"></div></article>
+      <article class="card">
+        <h3>Quick links</h3>
+        <p><a href="/assignments.html">Assignments</a></p>
+        <p><a href="/campus.html">Campus directory</a></p>
+        <p><a href="/announcements.html">Events & news</a></p>
+        <p><a href="/profile.html">Profile</a></p>
+      </article>
+    </section>
+    <section class="grid cols-2" style="margin-top:16px">
+      <article class="card"><h3>Announcements</h3><div id="ann-list"></div></article>
+      <article class="card"><h3>Upcoming events</h3><div id="evt-list"></div></article>
+    </section>
+  </template>
+  <script src="/js/api.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

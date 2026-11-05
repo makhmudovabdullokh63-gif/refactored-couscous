@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Announcements · CampusAI</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="app" id="app"></div>
+  <template id="page-template">
+    <header class="topbar">
+      <div>
+        <h2 class="page-title">Announcements & events</h2>
+        <p class="lede">Official posts from administrators. Demo items are fictional.</p>
+      </div>
+      <input id="q" placeholder="Search" style="max-width:280px" />
+    </header>
+    <section class="grid cols-2">
+      <div id="ann"></div>
+      <div id="evt"></div>
+    </section>
+  </template>
+  <script src="/js/api.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/announcements.js"></script>
+</body>
+</html>

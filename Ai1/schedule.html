@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Timetable · CampusAI</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="app" id="app"></div>
+  <template id="page-template">
+    <header class="topbar">
+      <div>
+        <h2 class="page-title">Timetable</h2>
+        <p class="lede" id="rangeLabel">Loading…</p>
+      </div>
+      <div class="toolbar">
+        <button class="ghost" id="prevBtn" type="button">Previous</button>
+        <button class="secondary" id="todayBtn" type="button">Today</button>
+        <button class="ghost" id="nextBtn" type="button">Next</button>
+        <button class="ghost" id="viewDay" type="button">Day</button>
+        <button class="primary" id="viewWeek" type="button">Week</button>
+        <input id="courseFilter" placeholder="Filter course code" style="width:160px" />
+      </div>
+    </header>
+    <div class="card" id="board"></div>
+  </template>
+  <script src="/js/api.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/schedule.js"></script>
+</body>
+</html>

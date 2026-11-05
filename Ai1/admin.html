@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin · CampusAI</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="app" id="app"></div>
+  <template id="page-template">
+    <header class="topbar">
+      <div>
+        <h2 class="page-title">Admin dashboard</h2>
+        <p class="lede">Protected server-side. Demo reset only works when ALLOW_DEMO_RESET=true.</p>
+      </div>
+      <nav class="toolbar">
+        <button class="ghost" data-tab-btn="overview">Overview</button>
+        <button class="ghost" data-tab-btn="courses">Courses</button>
+        <button class="ghost" data-tab-btn="schedules">Schedules</button>
+        <button class="ghost" data-tab-btn="assignments">Homework</button>
+        <button class="ghost" data-tab-btn="locations">Campus</button>
+        <button class="ghost" data-tab-btn="news">News</button>
+        <button class="ghost" data-tab-btn="students">Students</button>
+        <button class="ghost" data-tab-btn="import">CSV import</button>
+      </nav>
+    </header>
+
+    <section data-tab="overview">
+      <div class="grid cols-4" id="kpis"></div>
+      <article class="card" style="margin-top:16px">
+        <h3>Usage</h3>
+        <div class="chart-box"><canvas id="usageChart"></canvas></div>
+      </article>
+    </section>
+
+    <section data-tab="courses" hidden>
+      <form class="card" id="courseForm">
+        <h3>Add course</h3>
+        <div class="grid cols-3">
+          <div class="field"><label>Code</label><input name="code" required /></div>
+          <div class="field"><label>Name</label><input name="name" required /></div>
+          <div class="field"><label>Lecturer</label><input name="lecturer" required /></div>
+        </div>
+        <button class="primary" type="submit">Create course</button>
+      </form>
+      <div class="card" id="courseList" style="margin-top:12px"></div>
+    </section>
+
+    <section data-tab="schedules" hidden>
+      <form class="card" id="scheduleForm">
+        <h3>Add recurring class</h3>
+        <div class="grid cols-3">
+          <div class="field"><label>Course</label><select name="courseId" data-courses required></select></div>
+          <div class="field"><label>Group</label><select name="groupId" data-groups required></select></div>
+          <div class="field"><label>Weekday (0=Sun)</label><input name="weekday" type="number" min="0" max="6" value="1" required /></div>
+          <div class="field"><label>Start</label><input name="startTime" value="09:00" required /></div>
+          <div class="field"><label>End</label><input name="endTime" value="10:20" required /></div>
+          <div class="field"><label>Room</label><input name="classroom" required /></div>
+          <div class="field"><label>Building</label><input name="building" required /></div>
+          <div class="field"><label>Notes</label><input name="notes" /></div>
+        </div>
+        <button class="primary" type="submit">Add class</button>
+      </form>
+      <div class="card" id="scheduleList" style="margin-top:12px"></div>
+    </section>
+
+    <section data-tab="assignments" hidden>
+      <form class="card" id="assignmentForm">
+        <h3>Create assignment</h3>
+        <div class="grid cols-2">
+          <div class="field"><label>Title</label><input name="title" required /></div>
+          <div class="field"><label>Deadline (YYYY-MM-DDTHH:MM)</label><input name="deadline" required placeholder="2026-10-20T23:59" /></div>
+          <div class="field"><label>Course</label><select name="courseId" data-courses required></select></div>
+          <div class="field"><label>Group</label><select name="groupId" data-groups required></select></div>
+        </div>
+        <div class="field"><label>Description</label><textarea name="description" rows="3"></textarea></div>
+        <button class="primary" type="submit">Publish</button>
+      </form>
+      <div id="assignmentList" class="grid cols-2" style="margin-top:12px"></div>
+    </section>
+
+    <section data-tab="locations" hidden>
+      <form class="card" id="locationForm">
+        <h3>Add location</h3>
+        <div class="grid cols-3">
+          <div class="field"><label>Name</label><input name="name" required /></div>
+          <div class="field"><label>Category</label>
+            <select name="category">
+              <option value="library">library</option>
+              <option value="cafeteria">cafeteria</option>
+              <option value="computer_lab">computer_lab</option>
+              <option value="lecture_hall">lecture_hall</option>
+              <option value="administration">administration</option>
+              <option value="student_services">student_services</option>
+              <option value="other">other</option>
+            </select>
+          </div>
+          <div class="field"><label>Building</label><input name="building" required /></div>
+          <div class="field"><label>Floor</label><input name="floor" /></div>
+          <div class="field"><label>Room</label><input name="room" /></div>
+          <div class="field"><label>Open</label><input name="openTime" placeholder="08:00" /></div>
+          <div class="field"><label>Close</label><input name="closeTime" placeholder="22:00" /></div>
+        </div>
+        <div class="field"><label>Description</label><textarea name="description"></textarea></div>
+        <div class="field"><label>Directions</label><textarea name="directions"></textarea></div>
+        <button class="primary" type="submit">Add location</button>
+      </form>
+      <div id="locationList" class="grid cols-2" style="margin-top:12px"></div>
+    </section>
+
+    <section data-tab="news" hidden>
+      <div class="grid cols-2">
+        <form class="card" id="annForm">
+          <h3>Announcement</h3>
+          <div class="field"><label>Title</label><input name="title" required /></div>
+          <div class="field"><label>Category</label><input name="category" value="academic" required /></div>
+          <div class="field"><label>Description</label><textarea name="description" required></textarea></div>
+          <div class="field"><label>Location</label><input name="location" /></div>
+          <button class="primary" type="submit">Publish</button>
+        </form>
+        <form class="card" id="eventForm">
+          <h3>Event</h3>
+          <div class="field"><label>Title</label><input name="title" required /></div>
+          <div class="field"><label>Category</label><input name="category" value="campus_life" required /></div>
+          <div class="field"><label>Event date</label><input name="eventDate" placeholder="2026-10-15" required /></div>
+          <div class="field"><label>Start</label><input name="startTime" placeholder="12:00" /></div>
+          <div class="field"><label>Location</label><input name="location" /></div>
+          <div class="field"><label>Description</label><textarea name="description" required></textarea></div>
+          <button class="primary" type="submit">Create event</button>
+        </form>
+      </div>
+      <div class="card" id="newsList" style="margin-top:12px"></div>
+    </section>
+
+    <section data-tab="students" hidden>
+      <div class="card" id="studentList"></div>
+    </section>
+
+    <section data-tab="import" hidden>
+      <article class="card">
+        <h3>Import schedules CSV</h3>
+        <p class="muted">Columns: courseCode,groupCode,classroom,building,startTime,endTime,weekday,date,recurring,lecturer,notes</p>
+        <input id="schedFile" type="file" accept=".csv,text/csv" />
+        <button class="primary" id="importSchedules" type="button">Import schedules</button>
+        <h3 style="margin-top:18px">Import assignments CSV</h3>
+        <p class="muted">Columns: title,description,courseCode,groupCode,deadline,publishedAt,attachmentUrl</p>
+        <input id="hwFile" type="file" accept=".csv,text/csv" />
+        <button class="primary" id="importAssignments" type="button">Import homework</button>
+        <pre id="importOut" class="muted"></pre>
+        <hr />
+        <button class="danger" id="resetDemo" type="button">Reset labeled demo data</button>
+      </article>
+    </section>
+  </template>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

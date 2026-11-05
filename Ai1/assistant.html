@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Assistant · CampusAI</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="app" id="app"></div>
+  <template id="page-template">
+    <section class="card chat">
+      <header class="toolbar">
+        <div>
+          <h2 class="page-title">Campus assistant</h2>
+          <p class="lede" id="ai-mode">Checking AI mode…</p>
+        </div>
+        <div>
+          <button class="ghost" id="retry" type="button">Retry last</button>
+          <button class="ghost" id="clear" type="button">Clear history</button>
+        </div>
+      </header>
+      <div class="suggest">
+        <button type="button" data-suggest="What classes do I have today?">Today’s classes</button>
+        <button type="button" data-suggest="What classes do I have tomorrow?">Tomorrow</button>
+        <button type="button" data-suggest="When does my next class start and finish?">Next class</button>
+        <button type="button" data-suggest="What homework do I need to complete?">Homework</button>
+        <button type="button" data-suggest="Where is the library and what time does it close?">Library hours</button>
+        <button type="button" data-suggest="What university events are happening this week?">Events</button>
+      </div>
+      <div class="messages" id="messages" aria-live="polite"></div>
+      <p id="loading" class="muted" hidden>Looking up university records…</p>
+      <form class="composer" id="chat-form">
+        <input id="prompt" autocomplete="off" placeholder="Ask about your schedule, deadlines, or campus…" />
+        <button class="primary" type="submit">Send</button>
+      </form>
+    </section>
+  </template>
+  <script src="/js/api.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/assistant.js"></script>
+</body>
+</html>

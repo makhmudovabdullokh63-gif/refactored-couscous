@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Campus directory · CampusAI</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="app" id="app"></div>
+  <template id="page-template">
+    <header class="topbar">
+      <div>
+        <h2 class="page-title">Campus directory</h2>
+        <p class="lede">Text directions for Horizon University (demo). This is not a GPS map.</p>
+      </div>
+      <div class="filters">
+        <input id="q" placeholder="Search library, cafeteria, lab…" />
+        <select id="category">
+          <option value="">All categories</option>
+          <option value="library">Library</option>
+          <option value="cafeteria">Cafeteria</option>
+          <option value="computer_lab">Computer lab</option>
+          <option value="lecture_hall">Lecture hall</option>
+          <option value="administration">Administration</option>
+          <option value="student_services">Student services</option>
+          <option value="other">Other</option>
+        </select>
+        <button class="primary" id="searchBtn" type="button">Search</button>
+      </div>
+    </header>
+    <div class="card map-note">
+      <strong>Campus sketch (text)</strong>
+      <p>Main gate → Admin Building (Registrar, Clinic) → Quad → Knowledge Center (Library, Lab B) on the right → Engineering Hall (labs, A-201) north-east → Science Block east → Student Union south → Sports Complex north.</p>
+    </div>
+    <div class="grid cols-2" id="cards" style="margin-top:16px"></div>
+  </template>
+  <script src="/js/api.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/campus.js"></script>
+</body>
+</html>

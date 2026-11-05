@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile · CampusAI</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="app" id="app"></div>
+  <template id="page-template">
+    <header class="topbar">
+      <div>
+        <h2 class="page-title">Profile</h2>
+        <p class="lede">Language preference is sent with assistant questions.</p>
+      </div>
+    </header>
+    <form class="card" id="profile-form" style="max-width:520px">
+      <div class="field"><label for="name">Name</label><input id="name" required /></div>
+      <div class="field"><label for="email">Email</label><input id="email" disabled /></div>
+      <div class="field">
+        <label for="groupCode">Group code</label>
+        <select id="groupCode">
+          <option value="CS-21">CS-21</option>
+          <option value="CS-22">CS-22</option>
+          <option value="MATH-11">MATH-11</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="language">Language</label>
+        <select id="language">
+          <option value="en">English</option>
+          <option value="ru">Русский</option>
+          <option value="uz">O‘zbekcha</option>
+        </select>
+      </div>
+      <div class="field"><label for="password">New password (optional)</label><input id="password" type="password" minlength="8" /></div>
+      <button class="primary" type="submit">Save</button>
+    </form>
+  </template>
+  <script src="/js/api.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/profile.js"></script>
+</body>
+</html>

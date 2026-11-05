@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Log in · CampusAI</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <main class="hero">
+    <section class="hero-card" style="grid-template-columns:1fr">
+      <div class="auth-box" style="max-width:420px;margin:auto">
+        <h2>Log in</h2>
+        <form id="login-form">
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="username" /></div>
+          <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" required autocomplete="current-password" /></div>
+         <button class="primary"  itype="submit"> <a href="admin.html"></a>Log in</a></button>
+        </form>
+        <p><a href="/register.html">Need an account?</a> · <a href="/index.html">Home</a></p>
+      </div>
+    </section>
+  </main>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>
